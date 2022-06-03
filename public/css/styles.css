@@ -1,0 +1,35 @@
+.logo {
+    width: 6%;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+}
+
+.search {
+    width: 38%;
+}
+
+.search input{
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+}
+
+.links {
+    margin-bottom: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.links a{
+    color: #FFF;
+}
+
+.links a:hover{
+    color: #797979;
+    text-decoration: none;
+}
