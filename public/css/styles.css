@@ -33,3 +33,25 @@
     color: #797979;
     text-decoration: none;
 }
+
+
+.home-container {
+    width: 92vw;
+    height: 100vh;
+    display: flex;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 5px;
+}
+
+.event-card-content h3 {
+    font-size: 20px;
+}
+
+.event-card-content h6, p {
+    font-size: 13px;
+    color: #797979;
+}

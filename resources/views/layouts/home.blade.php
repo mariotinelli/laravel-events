@@ -20,7 +20,7 @@
     </head>
     <body class="">
 
-        <nav class="px-5 py-2 bg-dark position-sticky w-100" style="top: 0">
+        <nav class="px-5 py-2 bg-dark position-sticky w-100" style="top: 0; z-index: 1">
             <div class="row justify-content-between align-items-center">
                 <a href="#" class="logo">
                     <img src="/assets/logo.png" alt="logo">
