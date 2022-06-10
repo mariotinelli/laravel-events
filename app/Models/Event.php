@@ -16,11 +16,13 @@ class Event extends Model
      */
     protected $fillable = [
         'id_user',
+        'id_event_category',
         'title',
         'locality',
         'image',
         'participants',
         'description',
+        'capacity',
         'date',
     ];
 
@@ -30,6 +32,15 @@ class Event extends Model
             User::class,
             'id_user',
             'id_user'
+        );
+    }
+
+    public function event_category()
+    {
+        return $this->belongsTo(
+            EventCategory::class,
+            'id_event_category',
+            'id_event_category'
         );
     }
 }

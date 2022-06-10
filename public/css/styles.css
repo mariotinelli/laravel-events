@@ -1,5 +1,5 @@
 .logo {
-    width: 6%;
+    width: 6% !important;
 }
 
 .logo img {
@@ -27,11 +27,11 @@
 
 .links a{
     color: #FFF;
+    text-decoration: none;
 }
 
 .links a:hover{
     color: #797979;
-    text-decoration: none;
 }
 
 
@@ -54,4 +54,39 @@
 .event-card-content h6, p {
     font-size: 13px;
     color: #797979;
+}
+
+.event-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.event-form label,
+.event-form select .selected,
+.event-form option{
+    color: #6F7275;
+}
+
+.flex-event-cep,
+.flex-event-address,
+.flex-date-capacity {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-event-cep div{
+    width: 33%;
+}
+
+.flex-event-address > div:first-child {
+    width: 73%;
+}
+
+.flex-date-capacity div {
+    width: 49.8%;
+}
+
+#description {
+    resize: none;
 }

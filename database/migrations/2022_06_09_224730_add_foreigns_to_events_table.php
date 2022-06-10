@@ -20,6 +20,13 @@ class AddForeignsToEventsTable extends Migration
                 ->on('users')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
+
+            $table
+                ->foreign('id_event_category')
+                ->references('id_event_category')
+                ->on('event_category')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
         });
     }
 
@@ -31,7 +38,8 @@ class AddForeignsToEventsTable extends Migration
     public function down()
     {
         Schema::table('events', function (Blueprint $table) {
-            //
+            $table->dropForeign(['id_user']);
+            $table->dropForeign(['id_event_category']);
         });
     }
 }

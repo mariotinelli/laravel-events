@@ -31,7 +31,7 @@ class AddForeignsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropForeign(['id_type_user']);
         });
     }
 }
