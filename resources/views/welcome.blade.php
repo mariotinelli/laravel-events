@@ -6,27 +6,7 @@
 
     <div class="home-container">
 
-        <div class="w-75 h-100">
-            <h3 class="mb-4">Próximos eventos</h3>
-
-            <div class="cards h-100 pr-2">
-                <x-cards.event-card/>
-                <x-cards.event-card/>
-                <x-cards.event-card/>
-                <x-cards.event-card/>
-                <x-cards.event-card/>
-                <x-cards.event-card/>
-                <x-cards.event-card/>
-                <x-cards.event-card/>
-                <x-cards.event-card/>
-                <x-cards.event-card/>
-                <x-cards.event-card/>
-                <x-cards.event-card/>
-            </div>
-
-        </div>
-
-        <div class="w-25 px-5">
+        <div class="w-25 pe-5">
             <h3 class="mb-4">Filtros</h3>
             <div class="filter-date">
                 <form action="">
@@ -51,6 +31,18 @@
                     <button type="submit" class="list-group-item list-group-item-action list-group-item-dark"> Gastronômico </button>
                     <button type="submit" class="list-group-item list-group-item-action list-group-item-dark"> Religioso </button>
                 </form>
+            </div>
+        </div>
+
+        <div class="w-75 h-100">
+            <h3 class="mb-4">Próximos eventos</h3>
+
+            <div class="cards h-100 pr-2">
+                @foreach ($events as $event)
+                    <x-cards.event-card
+                        :event="$event"
+                    />
+                @endforeach
             </div>
 
         </div>

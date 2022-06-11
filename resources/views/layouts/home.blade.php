@@ -51,7 +51,79 @@
             @yield('content')
         </div>
 
+        <script>
+            function isFormValid(form) {
+                let isValid = true;
+                for (let index = 0; index < form.length; index++) {
+                    let input = form[index];
+
+                    if (input.name != '_token' && input.id != 'saveComapny') {
+                        if (!input.validity.valid) {
+                            const inputName = input.placeholder;
+                            // const message = `{{ __('validation.custom.field_required', ['field_name' => '${inputName}']) }}`;
+                            // toastr.error(message);
+                            // $('.ibi-preloader-wrapper').addClass('d-none');
+                            $(`#${input.id}`).get(0).focus();
+                            $(`#${input.id}`).css('border', '2px solid #1dd39d');
+                            isValid = false;
+                            return;
+                        }
+                    }
+                }
+                return isValid;
+            }
+
+            function handleInputBorderError(idForm) {
+                const formInputs = document.querySelectorAll(`#${idForm} input`);
+                const formTextareas = document.querySelectorAll(`#${idForm} textarea`);
+                const formSelects = document.querySelectorAll(`#${idForm} select`);
+
+                if (formSelects) {
+                    formSelects.forEach(textarea => {
+                        textarea.addEventListener('blur', (e) => {
+                            const select = e.target;
+                            const idSelect = e.target.id;
+                            const isValid = select.validity.valid;
+
+                            if (isValid && idSelect) {
+                                $(`#${idSelect}`).removeClass('ibi-border-error');
+                            }
+                        })
+                    });
+                }
+
+                if (formTextareas) {
+                    formTextareas.forEach(textarea => {
+                        textarea.addEventListener('blur', (e) => {
+                            const textarea = e.target;
+                            const idTexarea = e.target.id;
+                            const isValid = textarea.validity.valid;
+
+                            if (isValid && idTexarea) {
+                                $(`#${idTexarea}`).css('border', '1px solid #ced4da');
+                            }
+                        })
+                    });
+                }
+
+                if (formInputs) {
+                    formInputs.forEach(input => {
+                        input.addEventListener('blur', (e) => {
+                            const input = e.target;
+                            const idInput = e.target.id;
+                            const isValid = input.validity.valid;
+
+                            if (isValid && idInput) {
+                                $(`#${idInput}`).css('border', '1px solid #ced4da');
+                            }
+                        })
+                    });
+                }
+            }
+        </script>
     </body>
+
+
 </html>
 
 

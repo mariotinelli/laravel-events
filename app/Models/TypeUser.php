@@ -11,6 +11,8 @@ class TypeUser extends Model
 
     protected $fillable = ['name'];
 
+    protected $primaryKey = 'id_user_type';
+
     public function users()
     {
         return $this->hasMany(User::class, 'id_type_user', 'id_type_user');

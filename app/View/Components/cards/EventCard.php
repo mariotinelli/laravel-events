@@ -7,13 +7,22 @@ use Illuminate\View\Component;
 class EventCard extends Component
 {
     /**
+     * Event
+     *
+     * @var Event
+     */
+    public $event;
+
+    /**
      * Create a new component instance.
+     *
+     * @param  Event  $event
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($event)
     {
-        //
+        $this->event = $event;
     }
 
     /**

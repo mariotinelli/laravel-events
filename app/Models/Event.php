@@ -9,11 +9,6 @@ class Event extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'id_user',
         'id_event_category',
@@ -25,6 +20,8 @@ class Event extends Model
         'capacity',
         'date',
     ];
+
+    protected $primaryKey = 'id_event';
 
     public function user()
     {
