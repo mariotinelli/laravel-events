@@ -40,4 +40,13 @@ class Event extends Model
             'id_event_category'
         );
     }
+
+    public function event_address()
+    {
+        return $this->belongsTo(
+            EventAddress::class,
+            'id_event_address',
+            'id_event_address'
+        );
+    }
 }

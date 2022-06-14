@@ -1,4 +1,4 @@
-@extends('layouts.home')
+@extends('layouts.events.master')
 
 @section('title', 'Criar Evento')
 
@@ -32,7 +32,9 @@
             }
 
             if (inputValue.length === 9) {
+                $('.preloader-wrapper').removeClass('d-none');
                 getAddress(inputValue);
+                $('.preloader-wrapper').addClass('d-none');
             }
         });
 
@@ -42,7 +44,6 @@
             const apiUrl = `https://viacep.com.br/ws/${cep}/json/`;
             const response = await fetch(apiUrl);
             const data = await response.json();
-            console.log(data);
 
             cityInput.value = data.localidade;
             stateInput.value = data.uf;
@@ -51,7 +52,7 @@
         }
 
         $('#saveEvent').click(function(e) {
-                // $('.ibi-preloader-wrapper').removeClass('d-none');
+                $('.preloader-wrapper').removeClass('d-none');
                 e.preventDefault();
                 e.stopPropagation();
 
@@ -96,7 +97,7 @@
                                 }
                             }
 
-                            // $('.ibi-preloader-wrapper').addClass('d-none');
+                            $('.ibi-preloader-wrapper').addClass('d-none');
                             // toastr.error(response);
                         },
                     });

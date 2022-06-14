@@ -22,5 +22,10 @@ class EventAddress extends Model
         'event_address_number',
     ];
 
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'id_event_address', 'id_event_address');
+    }
+
 
 }

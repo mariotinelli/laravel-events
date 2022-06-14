@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $events = Event::all();
+        $events = Event::orderBy('date', 'asc')->get();
 
         return view('welcome', compact('events'));
     }

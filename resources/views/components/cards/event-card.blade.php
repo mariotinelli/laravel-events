@@ -4,8 +4,8 @@
     </div>
     <div class="card-body event-card-content">
         <h3>{{$event->title}}</h3>
-        <h6>{{$event->date}}</h6>
+        <h6> {{\Carbon\Carbon::parse($event->date)->format('d/m/Y')}}</h6>
         <p>{{$event->description}}</p>
-        <button class="btn btn-success">Saber mais</button>
+        <a href="{{route('events.show', $event->id_event)}}" class="btn btn-success">Saber mais</a>
     </div>
 </div>

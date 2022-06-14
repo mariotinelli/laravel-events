@@ -27,25 +27,58 @@
 
         <script src="/js/form-mask.js"></script>
 
-    </head>
-    <body class="">
+        <style>
+            .circlespinner {
+                animation: rotate 2s linear infinite;
+                z-index: 2;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin: -25px 0 0 -25px;
+                width: 50px;
+                height: 50px;
+                stroke: #fff
+            }
+            .path {
+                stroke: hsl(210, 70, 75);
+                stroke-linecap: round;
+                animation: dash 1.5s ease-in-out infinite
+            }
 
-        <nav class="px-5 py-2 bg-dark position-sticky w-100" style="top: 0; z-index: 1">
-            <div class="row justify-content-between align-items-center">
-                <a href="#" class="col-2 logo">
-                    <img src="/assets/logo.png" alt="logo">
-                </a>
-                <div class="col-5 search">
-                    <input type="text" placeholder="Busque um evento">
-                </div>
-                <ul class="col-3 links">
-                    <a href="#">Eventos</a>
-                    <a href="#">Meus Eventos</a>
-                    <a href="{{route('events.create')}}">Criar Evento</a>
-                    <a href="#">Logout</a>
-                </ul>
-            </div>
-        </nav>
+            @keyframes rotate {
+                100% {
+                    transform: rotate(360deg)
+                }
+            }
+
+            @keyframes dash {
+                0% {
+                    stroke-dasharray: 1, 150;
+                    stroke-dashoffset: 0
+                }
+
+                50% {
+                    stroke-dasharray: 90, 150;
+                    stroke-dashoffset: -35
+                }
+
+                100% {
+                    stroke-dasharray: 90, 150;
+                    stroke-dashoffset: -124
+                }
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <div class="preloader-wrapper d-none">
+            <svg class="circlespinner" viewBox="0 0 50 50">
+                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+            </svg>
+        </div>
+
+        @include('layouts.home.nav')
 
         <div class="w-100 h-100 p-5">
             @yield('content')
