@@ -37,6 +37,8 @@
     margin-bottom: 0;
     display: flex;
     gap: 20px;
+    display: flex;
+    justify-content: end;
 }
 
 .links a{
@@ -186,4 +188,12 @@
     font-size: 16px;
 }
 
+.table tr td,
+.table tr th {
+    vertical-align: middle;
+}
+
+.table .table-8-percent {
+    width: 8%;
+}
 

@@ -7,10 +7,16 @@
             <input type="text" placeholder="Busque um evento">
         </div>
         <ul class="col-3 links">
-            <a href="#">Eventos</a>
-            <a href="#">Meus Eventos</a>
-            <a href="{{route('events.create')}}">Criar Evento</a>
-            <a href="#">Logout</a>
+            <a href="{{route('home')}}">Eventos</a>
+            @auth
+                <a href="{{route('events.index')}}">Meus Eventos</a>
+                <a href="{{route('events.create')}}">Criar Evento</a>
+                <a href="{{route('logout')}}">Logout</a>
+            @endauth
+            @guest
+                <a href="{{route('login')}}">Login</a>
+                <a href="{{route('register')}}">Register</a>
+            @endguest
         </ul>
     </div>
 </nav>

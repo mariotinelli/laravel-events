@@ -6,7 +6,7 @@
 
     <div class="d-flex" style="gap: 40px">
         <div class="event-show-image">
-            <img src="http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png" alt="Teste">
+            <img src="{{asset("storage/$event->image")}}" alt="Imagem do Evento">
         </div>
         <div class="event-show-infos d-flex flex-column justify-content-between">
             <h3 class="mb-3">{{$event->title}}</h3>
@@ -15,7 +15,7 @@
                 <div class="col-5">
                     <p>
                         <i class="fa-solid fa-user-large"></i>
-                        Dono
+                        {{explode(' ', $event->user->name)[0]}}
                     </p>
                     <p>
                         <i class="fa-solid fa-calendar-days"></i>
@@ -35,13 +35,7 @@
             </div>
             <p>
                 <i class="fa-solid fa-location-dot"></i>
-                {{
-                    $event->event_address->event_address . ', ' .
-                    $event->event_address->event_address_number . ', ' .
-                    $event->event_address->event_address_district .' - ' .
-                    $event->event_address->event_city . '-' .
-                    $event->event_address->event_state
-                }}
+                {{ $eventAddress }}
             </p>
 
             <a class="btn btn-primary w-50">Confirmar presença</a>

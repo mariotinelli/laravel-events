@@ -13,7 +13,7 @@ class EventUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,24 @@ class EventUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'image' => ['sometimes', 'image', 'max:10240'],
+            'title' => ['sometimes', 'max:191', 'string'],
+            'date' => ['sometimes'],
+            'capacity' => ['sometimes', 'integer'],
+            'description' => ['sometimes', 'string'],
+            'participants' => ['sometimes', 'integer'],
+            'id_user' => [
+                'sometimes',
+                'exists:users,id_user',
+            ],
+            'id_event_category' => [
+                'sometimes',
+                'exists:event_category,id_event_category',
+            ],
+            'id_event_address' => [
+                'sometimes',
+                'exists:event_address,id_event_address',
+            ],
         ];
     }
 }
