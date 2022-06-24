@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 // })->name('home');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
+Route::get('events/filter', [HomeController::class, 'returnEventsByFilter'])->name('home.filter');
 
 
 Route::middleware([
@@ -34,4 +34,7 @@ Route::middleware([
     })->name('dashboard');
     Route::resource('users', UserController::class);
     Route::resource('events', EventController::class);
+    Route::post('events/destroy/{event}', [EventController::class, 'destroy'])->name('events.destroy');
 });
+
+

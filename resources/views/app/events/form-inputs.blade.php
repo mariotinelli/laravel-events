@@ -181,8 +181,8 @@
 
 <!-- Descrição do evento -->
 <div class="form-floating">
-    <textarea class="form-control h-auto" name="description" id="description" placeholder="Descrição do evento" rows="7" required>
-        {{ old('description', $event->description ?? '')}}
+    <textarea class="form-control h-auto" name="description" id="description" placeholder="Descrição do evento" rows="7" required
+        >{{old('description', $event->description ?? '')}}
     </textarea>
     <label for="description">Descrição do evento</label>
 </div>

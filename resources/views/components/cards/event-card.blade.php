@@ -1,5 +1,5 @@
 <div class="card d-flex flex-column" style="height: 321px">
-    <div class="card-header p-0 event-card-img" >
+    <div class="p-0 event-card-img" >
         <img src="{{asset("storage/$event->image")}}" alt="Imagem do Evento">
     </div>
     <div class="card-body event-card-content">

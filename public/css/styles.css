@@ -7,6 +7,14 @@
   z-index: 1038;
 }
 
+.events-loader {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 1038;
+}
+
 .preloader-wrapper .circlespinner {
   stroke: #035aff;
 }
@@ -195,5 +203,14 @@
 
 .table .table-8-percent {
     width: 8%;
+}
+
+.events-filter {
+    padding-right: 1rem;
+    width: 20%;
+}
+
+.events-main {
+    width: 80%;
 }
 

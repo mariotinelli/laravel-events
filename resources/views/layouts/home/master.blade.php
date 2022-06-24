@@ -6,6 +6,9 @@
 
         <title>{{ env('APP_NAME') }} - @yield('title')</title>
 
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -89,11 +92,13 @@
 
         @include('layouts.home.nav')
 
-        <div class="w-100 h-100 p-5 d-flex">
-            <div class="w-25" style="padding-right: 9rem">
-                @include('layouts.home.filter')
+        <div class="p-5 d-flex">
+            <div class="events-filter">
+                <div class="card p-3">
+                    @include('layouts.home.filter')
+                </div>
             </div>
-            <div class="w-75 h-100">
+            <div class="events-main px-3">
                 @yield('content')
             </div>
         </div>
@@ -169,10 +174,79 @@
                     });
                 }
             }
+
+
+            $(document).ready(function() {
+
+                $(".active-filter").on('click', function() {
+
+                    $('.events-list-container').addClass('d-none');
+                    $('.events-list-load').removeClass('d-none');
+
+                    $('.next-events').addClass('d-none');
+                    $('.filter-events').removeClass('d-none');
+
+                    let search = @js($search) ? @js($search) : $('#search').val();
+                    let filterDateFrom = @js($filterDateFrom) ? @js($filterDateFrom) : $('#filter-date-from').val();
+                    let filterDateTo = @js($filterDateTo) ? @js($filterDateTo) : $('#filter-date-to').val();
+                    var filterCategory = @js($filterCategory) ?? '';
+
+                    if ($(this).attr('name') == 'category') {
+                        filterCategory = $(this).attr('data-value');
+                    }
+
+                    var token = $('meta[name="csrf-token"]').attr('content');
+
+                    $.ajax({
+                        type:'GET',
+                        url:"{{ route('home.filter') }}",
+                        dataType: 'JSON',
+                        data: {
+                            search,
+                            filterDateFrom,
+                            filterDateTo,
+                            filterCategory,
+                            _token: token
+                        },
+                        success:function(data){
+                            if(data.length > 0){
+                                const events = data.map(d=>{
+                                    return `<div>
+                                                ${d}
+                                            </div>`;
+                                }).join('');
+                                $(".events-list").html(events);
+                            } else {
+                                const noEvents = `<p> Nenhum evento encontrado. </p>`;
+                                $(".events-list").html(noEvents);
+                            }
+
+                            $('.events-list-load').addClass('d-none');
+                            $('.events-list-container').removeClass('d-none');
+                        },
+                        error:function(){
+                            toastr.error("Erro ao filtrar");
+
+                            $('.events-list-load').addClass('d-none');
+                            $('.events-list-container').removeClass('d-none');
+                        },
+                    });
+                });
+
+                $(".category-filter").each(function(index, button){
+                    $(button).on('click', function(e){
+                        var id = e.target.id;
+                        $(".category-filter").each(function(index, element){
+                            if(id != element.id){
+                                $(element).removeClass("active");
+                            }
+                        });
+                        $(this).addClass("active");
+                    });
+                });
+            });
         </script>
     </body>
-
-
 </html>
 
 
